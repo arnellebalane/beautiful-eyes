@@ -10,10 +10,31 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    font-family: "Roboto";
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    color: #fff;
     background-color: #222;
     overflow: hidden;
 }
 
+p,
+img,
 canvas {
+    display: none;
+}
+
+body.available canvas,
+body.unavailable p {
     display: block;
+}
+
+p {
+    max-width: 80vw;
+    font-weight: 300;
+    text-align: center;
+}
+
+p strong {
+    font-weight: 500;
 }
