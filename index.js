@@ -32,9 +32,12 @@ async function runBeautifulEyes() {
 
     const faceDetector = new FaceDetector();
     let renderLocked = false;
+    let shouldRender = true;
 
     async function renderFrame() {
+        if (!shouldRender) return;
         requestAnimationFrame(renderFrame);
+
         if (renderLocked) return;
         renderLocked = true;
 
@@ -69,8 +72,10 @@ async function runBeautifulEyes() {
 
             renderLocked = false;
         } catch (e) {
+            shouldRender = false;
             document.querySelector('.error').textContent = 'Face detector service is not available.';
-            document.body.classList.toggle('available', 'unavailable');
+            document.body.classList.toggle('available');
+            document.body.classList.toggle('unavailable');
         }
     }
 }
